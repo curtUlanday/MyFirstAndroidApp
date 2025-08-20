@@ -2,6 +2,9 @@ package com.example.myapp_nw2g;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +15,8 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
+    TextView name;
+    Button greetMeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +30,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Log.d(TAG, "onCreate called");
+
+        // Initialize UI components
+        name = findViewById(R.id.name);
+        greetMeButton = findViewById(R.id.greetMeButton);
+
+        greetMeButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                name.setText("Curt");
+            }
+        });
     }
 
     @Override
