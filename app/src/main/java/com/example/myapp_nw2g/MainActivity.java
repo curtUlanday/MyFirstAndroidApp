@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.content.Intent;
+import android.net.Uri;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
     TextView name;
-    Button greetMeButton;
+    Button greetMeButton, openGoogle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
         // Initialize UI components
         name = findViewById(R.id.name);
         greetMeButton = findViewById(R.id.greetMeButton);
+        openGoogle = findViewById(R.id.okayGoogle);
+
+
 
         greetMeButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -41,6 +46,22 @@ public class MainActivity extends AppCompatActivity {
                 name.setText("Curt");
             }
         });
+
+
+        // Android buttons and intents
+        // When you tap “Open Google”, it opens the default browser and loads Google.
+        // When you tap “Share Text”, a share menu appears (Messenger, Gmail, WhatsApp, etc.).
+
+        openGoogle.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Uri uri = Uri.parse("tel:123456789");
+                Intent it = new Intent(Intent.ACTION_DIAL, uri);
+                startActivity(it);
+
+            }
+        });
+
     }
 
     @Override
